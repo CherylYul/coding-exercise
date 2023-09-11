@@ -17,7 +17,8 @@ namespace SuperBank
                 foreach (var item in allTransactions)
                     balance += item.Amount;
                 return balance;
-            }; }
+            }
+        }
 
         private List<Transaction> allTransactions = new List<Transaction>();
         public BankAccount(string owner, decimal initialBalance)
@@ -49,9 +50,10 @@ namespace SuperBank
         public string GetTransactionHistory()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Date\tAmount\tNote");
+            sb.AppendLine("Date\t\t\tAmount\tNote");
             foreach (var item in allTransactions)
                 sb.AppendLine($"{item.Date}\t{item.Amount}\t{item.Note}");
+            sb.AppendLine($"Remains:\t\t{this.Balance}");
             return sb.ToString();
         }
     }
